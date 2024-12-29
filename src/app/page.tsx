@@ -1,5 +1,7 @@
 import { db } from "~/server/db";
 
+export const dynamic = "force-dynamic";
+
 /* eslint-disable @next/next/no-img-element */
 const mockUrls = [
   "https://utfs.io/f/Sf47aEru3JHDCsic8VtVIXgxAWfaoTntewBEZs54b3cqlijp",
@@ -16,11 +18,12 @@ const mockImages = mockUrls.map((url, index) => ({
 export default async function HomePage() {
   const posts = await db.query.posts.findMany();
 
-  console.log(posts);
-
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
+        {posts.map((post) => (
+          <div key={post.id}>{post.name}</div>
+        ))}
         {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
           <div key={index} className="w-1/6">
             <img src={image.url} alt="image" />
