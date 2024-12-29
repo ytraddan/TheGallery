@@ -20,6 +20,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.9.6",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@vercel/postgres": "^0.10.0",
     "drizzle-orm": "^0.33.0",
