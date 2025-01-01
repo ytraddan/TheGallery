@@ -10,3 +10,8 @@ dialog {
   max-width: 100vw;
   max-height: 100vh;
 }
+
+.cl-avatarBox {
+  width: 2.5rem;
+  height: 2.5rem;
+}

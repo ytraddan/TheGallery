@@ -3,7 +3,7 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { getMyImages } from "~/server/queries";
 import Link from "next/link";
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 async function Images() {
   const images = await getMyImages();
@@ -17,7 +17,7 @@ async function Images() {
               src={image.url}
               style={{ objectFit: "contain" }}
               width={240}
-              height={240}
+              height={150}
               alt={image.name}
             />
             <div>{image.name}</div>
