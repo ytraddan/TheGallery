@@ -29,7 +29,7 @@ export default function RootLayout({
           </div>
           {modal}
           <div id="modal-root" />
-          <Toaster/>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
