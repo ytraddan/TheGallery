@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function TopNav() {
   return (
-    <nav className="flex h-20 w-full items-center justify-between border-b p-4 text-xl font-semibold">
+    <nav className="flex h-20 w-full items-center justify-between border-b p-4 text-3xl">
       <Link href="/">
         <div>Gallery</div>
       </Link>
