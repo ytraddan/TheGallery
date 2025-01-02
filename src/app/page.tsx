@@ -9,12 +9,12 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="grid grid-cols-1 gap-6 p-8 md:px-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 md:px-14 lg:grid-cols-4">
       {images.map((image) => (
         <Link
           href={`/img/${image.id}`}
           key={image.id}
-          className="hover:bg-accent overflow-hidden rounded-lg border transition-colors"
+          className="overflow-hidden rounded-lg border transition-colors hover:bg-accent"
         >
           <div>
             <Image
@@ -26,7 +26,7 @@ async function Images() {
             />
           </div>
           <div className="p-4">
-            <h2 className="font-medium first-letter:capitalize">
+            <h2 className="text-center font-medium first-letter:capitalize">
               {image.name}
             </h2>
           </div>
