@@ -23,14 +23,21 @@ export default async function FullPageImageView(props: { id: number }) {
           </h2>
         </div>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="space-y-1">
+          <div className="space-y-3">
             <span className="text-sm text-muted-foreground">Uploaded By</span>
-            <p className="font-medium">
-              {uploaderInfo.fullName}{" "}
-              <span className="text-sm text-muted-foreground">
-                @{uploaderInfo.username}
-              </span>
-            </p>
+            <div className="flex items-center gap-2">
+              <img
+                src={uploaderInfo.imageUrl}
+                alt="user picture"
+                className="h-20 rounded-full"
+              />
+              <p className="font-medium">
+                {uploaderInfo.fullName + " "}{" "}
+                <span className="block text-sm text-muted-foreground">
+                  @{uploaderInfo.username}
+                </span>
+              </p>
+            </div>
           </div>
           <div className="space-y-1">
             <span className="text-sm text-muted-foreground">Created On</span>
@@ -45,7 +52,10 @@ export default async function FullPageImageView(props: { id: number }) {
           <button className="mt-auto rounded-lg bg-card/70 p-4 text-blue-500 hover:underline">
             Edit
           </button>
-          <button className="rounded-lg bg-card/70 p-4 text-red-500 hover:underline">
+          <button
+            type="submit"
+            className="rounded-lg bg-card/70 p-4 text-red-500 hover:underline"
+          >
             Delete
           </button>
         </div>
