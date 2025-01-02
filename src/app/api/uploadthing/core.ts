@@ -36,7 +36,7 @@ export const ourFileRouter = {
       console.log("Upload complete for userId:", metadata.userId);
 
       await db.insert(images).values({
-        name: file.name,
+        name: file.name.split('.').slice(0, -1).join('.'),
         url: file.url,
         userId: metadata.userId,
       });
