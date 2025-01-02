@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { clerkClient } from "@clerk/nextjs/server";
 import { deleteImage, getImage } from "~/server/queries";
+import Image from "next/image";
 
 export default async function FullPageImageView(props: { id: number }) {
   const image = await getImage(props.id);
@@ -10,15 +11,11 @@ export default async function FullPageImageView(props: { id: number }) {
   return (
     <div className="flex flex-col p-8 md:flex-row md:space-x-5 md:px-16">
       <div className="flex flex-1 items-center justify-center rounded-lg border bg-card/70 backdrop-blur-xl dark:bg-card/50 md:aspect-video">
-        <img
-          src={image.url}
-          className="max-h-full rounded-lg"
-          alt={image.name}
-        />
+        <img src={image.url} className="max-h-full" alt={image.name} />
       </div>
       <div className="flex w-full flex-shrink-0 flex-col rounded-lg border bg-card/85 backdrop-blur-2xl dark:bg-card/50 md:w-80">
         <div className="border-b p-4">
-          <h2 className="text-xl font-semibold first-letter:capitalize">
+          <h2 className="text-center text-xl font-semibold first-letter:capitalize">
             {image.name}
           </h2>
         </div>
@@ -26,10 +23,12 @@ export default async function FullPageImageView(props: { id: number }) {
           <div className="space-y-3">
             <span className="text-sm text-muted-foreground">Uploaded By</span>
             <div className="flex items-center gap-2">
-              <img
+              <Image
                 src={uploaderInfo.imageUrl}
                 alt="user picture"
-                className="h-20 rounded-full"
+                className="rounded-full"
+                width={80}
+                height={80}
               />
               <p className="font-medium">
                 {uploaderInfo.fullName + " "}{" "}
