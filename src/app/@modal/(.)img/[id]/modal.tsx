@@ -21,7 +21,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
   return createPortal(
     <dialog
       ref={dialogRef}
-      className="w-screen bg-transparent text-black backdrop:bg-card/70 backdrop:backdrop-blur-sm dark:text-white md:p-16"
+      className="w-screen bg-transparent text-black backdrop:bg-black/20 backdrop:backdrop-blur-sm dark:text-white dark:backdrop:bg-card/70 md:p-16"
       onClose={onDismiss}
       onClick={(e) => {
         if (e.target === dialogRef.current) {

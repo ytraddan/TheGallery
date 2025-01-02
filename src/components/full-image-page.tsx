@@ -9,14 +9,14 @@ export default async function FullPageImageView(props: { id: number }) {
 
   return (
     <div className="flex flex-col p-8 md:flex-row md:space-x-5 md:px-16">
-      <div className="flex flex-1 items-center justify-center rounded-lg border bg-card/30 backdrop-blur-xl md:aspect-video">
+      <div className="flex flex-1 items-center justify-center rounded-lg border bg-card/70 backdrop-blur-xl dark:bg-card/50 md:aspect-video">
         <img
           src={image.url}
           className="max-h-full rounded-lg"
           alt={image.name}
         />
       </div>
-      <div className="flex w-full flex-shrink-0 flex-col rounded-lg border bg-card/50 backdrop-blur-2xl md:w-80">
+      <div className="flex w-full flex-shrink-0 flex-col rounded-lg border bg-card/85 backdrop-blur-2xl dark:bg-card/50 md:w-80">
         <div className="border-b p-4">
           <h2 className="text-xl font-semibold first-letter:capitalize">
             {image.name}
@@ -42,6 +42,12 @@ export default async function FullPageImageView(props: { id: number }) {
               })}
             </p>
           </div>
+          <button className="mt-auto rounded-lg bg-card/70 p-4 text-blue-500 hover:underline">
+            Edit
+          </button>
+          <button className="rounded-lg bg-card/70 p-4 text-red-500 hover:underline">
+            Delete
+          </button>
         </div>
       </div>
     </div>
