@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { clerkClient } from "@clerk/nextjs/server";
-import { getImage } from "~/server/queries";
+import { deleteImage, getImage } from "~/server/queries";
 
 export default async function FullPageImageView(props: { id: number }) {
   const image = await getImage(props.id);
@@ -49,15 +49,24 @@ export default async function FullPageImageView(props: { id: number }) {
               })}
             </p>
           </div>
-          <button className="mt-auto rounded-lg bg-card/70 p-4 text-blue-500 hover:underline">
-            Edit
-          </button>
-          <button
-            type="submit"
-            className="rounded-lg bg-card/70 p-4 text-red-500 hover:underline"
-          >
-            Delete
-          </button>
+          <div className="mt-auto space-y-4">
+            <button className="w-full rounded-lg bg-card/70 p-4 text-blue-500 hover:underline">
+              Edit
+            </button>
+            <form
+              action={async () => {
+                "use server";
+                await deleteImage(image.id);
+              }}
+            >
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-card/70 p-4 text-red-500 hover:underline"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
