@@ -10,7 +10,7 @@ import { NextSSRPlugin } from "node_modules/@uploadthing/react/next-ssr-plugin/i
 import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "The Gallery",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
