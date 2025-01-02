@@ -9,7 +9,7 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="grid grid-cols-1 gap-6 p-8 px-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 p-8 md:px-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {images.map((image) => (
         <Link
           href={`/img/${image.id}`}
