@@ -14,7 +14,7 @@ async function Images() {
         <Link
           href={`/img/${image.id}`}
           key={image.id}
-          className="overflow-hidden rounded-lg border transition-colors hover:bg-accent"
+          className="overflow-hidden rounded-xl border transition-colors hover:bg-accent"
         >
           <div>
             <Image
