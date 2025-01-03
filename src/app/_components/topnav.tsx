@@ -7,10 +7,10 @@ export default function TopNav() {
   return (
     <nav className="flex h-20 w-full items-center justify-between border-b p-8 text-2xl font-semibold md:px-16">
       <div className="flex items-center gap-4">
-        <Link href="/" className="transition-opacity hover:opacity-70">
+        <Link href="/">
           <div>The Gallery</div>
         </Link>
-        <ThemeToggle/>
+        <ThemeToggle />
       </div>
       <div className="flex flex-row items-center gap-6">
         <SignedOut>

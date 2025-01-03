@@ -1,12 +1,25 @@
 "use client";
 
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-
-
-
-  return <div onClick={toggleTheme}>{isDark ? <SunSVG /> : <MoonSVG />}</div>;
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  return (
+    <div
+      className="cursor-pointer transition-opacity hover:opacity-70"
+      onClick={() =>
+        currentTheme == "dark" ? setTheme("light") : setTheme("dark")
+      }
+    >
+      <div className="hidden dark:block">
+        <SunSVG />
+      </div>
+      <div className="dark:hidden">
+        <MoonSVG />
+      </div>
+    </div>
+  );
 }
 
 function SunSVG() {

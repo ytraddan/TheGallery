@@ -40,8 +40,8 @@ export default function HomePage() {
   return (
     <>
       <SignedOut>
-        <div className="h-full w-full text-center text-2xl">
-          Please Sign In first
+        <div className="mt-16 text-center text-2xl">
+          You must be Signed In to view The Gallery
         </div>
       </SignedOut>
       <SignedIn>
