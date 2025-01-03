@@ -11,7 +11,7 @@ export default async function ImageGrid() {
         <Link
           href={`/img/${image.id}`}
           key={image.id}
-          className="overflow-hidden rounded-xl border transition-colors hover:bg-accent"
+          className="overflow-hidden rounded-xl border bg-card/70 shadow-lg transition-all hover:bg-card-foreground/10 hover:shadow-xl"
         >
           <div>
             <Image
@@ -22,7 +22,7 @@ export default async function ImageGrid() {
               alt={image.name}
             />
           </div>
-          <div className="p-4">
+          <div className="p-4 backdrop-blur-sm">
             <h2 className="text-center font-medium first-letter:capitalize">
               {image.name.split(".").slice(0, -1).join(".")}
             </h2>

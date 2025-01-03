@@ -5,7 +5,7 @@ import ThemeToggle from "./theme-toggle";
 
 export default function TopNav() {
   return (
-    <nav className="flex h-20 w-full items-center justify-between border-b p-8 text-2xl font-semibold md:px-16">
+    <nav className="flex h-20 w-full items-center justify-between border-b bg-card/65 p-8 text-2xl font-semibold md:px-16">
       <div className="flex items-center gap-4">
         <Link href="/">
           <div>The Gallery</div>
