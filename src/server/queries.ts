@@ -15,6 +15,16 @@ export async function getMyImages() {
   return images;
 }
 
+export async function getImages() {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const images = await db.query.images.findMany({
+    orderBy: (model, { desc }) => desc(model.id),
+  });
+  return images;
+}
+
 export async function getImage(id: number) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
@@ -24,7 +34,6 @@ export async function getImage(id: number) {
   });
 
   if (!image) throw new Error("Image not found");
-  if (image.userId !== userId) throw new Error("Unauthorized");
 
   return image;
 }

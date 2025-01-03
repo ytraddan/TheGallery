@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { getMyImages } from "~/server/queries";
+import { getImages } from "~/server/queries";
 import Image from "next/image";
 
-
-
 export default async function ImageGrid() {
-  const images = await getMyImages();
+  const images = await getImages();
 
   return (
     <div className="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 md:px-14 lg:grid-cols-4">
