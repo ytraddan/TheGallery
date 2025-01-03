@@ -17,7 +17,7 @@ export default function TopNav() {
       <div className="flex flex-row items-center gap-6">
         <SignedOut>
           <SignInButton>
-            <button className="rounded-xl bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 px-4 py-2 text-lg text-white transition-opacity hover:opacity-85">
+            <button className="rounded-xl bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 px-4 py-2 text-lg text-white transition-opacity hover:opacity-85 dark:from-blue-500/70 dark:via-purple-400/70 dark:to-pink-400/70">
               Sign In
             </button>
           </SignInButton>
