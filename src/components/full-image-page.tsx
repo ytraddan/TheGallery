@@ -49,14 +49,14 @@ export default async function FullPageImageView(props: { id: number }) {
           <div className="mt-auto space-y-4">
             {/* <button
               disabled 
-              className="w-full rounded-xl bg-zinc-200/40 p-4 text-blue-500 dark:bg-zinc-800/40"
+              className="w-full rounded-xl bg-zinc-200/40 p-4 text-lg text-blue-500 dark:bg-zinc-800/40"
             >
               Edit
             </button> */}
             <DeleteForm id={image.id} UTKey={image.UTKey}>
               <button
                 type="submit"
-                className="w-full rounded-xl bg-zinc-200/40 p-4 text-red-500 hover:underline dark:bg-zinc-800/40"
+                className="w-full rounded-xl bg-zinc-200/40 p-4 text-lg text-red-500 hover:underline dark:bg-zinc-800/40"
               >
                 Delete
               </button>
