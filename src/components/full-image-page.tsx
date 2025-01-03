@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { clerkClient } from "@clerk/nextjs/server";
 import { deleteImage, getImage } from "~/server/queries";
-import Image from "next/image";
+import { deleteImageUT } from "~/server/uploadthing";
+import { redirect } from "next/navigation";
 
 export default async function FullPageImageView(props: { id: number }) {
   const image = await getImage(props.id);
@@ -16,7 +18,7 @@ export default async function FullPageImageView(props: { id: number }) {
       <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/85 backdrop-blur-2xl dark:bg-card/50 md:w-80">
         <div className="border-b p-4">
           <h2 className="text-center text-xl font-semibold first-letter:capitalize">
-            {image.name}
+            {image.name.split(".").slice(0, -1).join(".")}
           </h2>
         </div>
         <div className="flex flex-1 flex-col gap-4 p-4">
@@ -53,6 +55,8 @@ export default async function FullPageImageView(props: { id: number }) {
               action={async () => {
                 "use server";
                 await deleteImage(image.id);
+                await deleteImageUT(image.UTKey);
+                redirect("/");
               }}
             >
               <button

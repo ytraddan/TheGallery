@@ -27,7 +27,7 @@ async function Images() {
           </div>
           <div className="p-4">
             <h2 className="text-center font-medium first-letter:capitalize">
-              {image.name}
+              {image.name.split(".").slice(0, -1).join(".")}
             </h2>
           </div>
         </Link>
