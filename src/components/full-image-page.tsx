@@ -12,7 +12,13 @@ export default async function FullPageImageView(props: { id: number }) {
   return (
     <div className="flex flex-col p-8 md:flex-row md:space-x-5 md:px-16">
       <div className="flex flex-1 items-center justify-center overflow-hidden rounded-xl border bg-card/85 backdrop-blur-xl dark:bg-card/50 md:aspect-video">
-        <img src={image.url} className="max-h-full" alt={image.name} />
+        <Image
+          src={image.url}
+          alt={image.name}
+          className="max-h-full w-auto"
+          width={1920}
+          height={1080}
+        />
       </div>
       <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/85 backdrop-blur-2xl dark:bg-card/50 md:w-80">
         <div className="border-b p-4">
@@ -56,7 +62,7 @@ export default async function FullPageImageView(props: { id: number }) {
             <DeleteForm id={image.id} UTKey={image.UTKey}>
               <button
                 type="submit"
-                className="w-full rounded-xl bg-zinc-200/40 p-4 text-lg text-red-500 hover:underline dark:bg-zinc-800/40"
+                className="w-full rounded-xl bg-red-500/5 p-4 text-lg font-medium text-red-500 transition-colors hover:bg-red-500/15 hover:text-red-600"
               >
                 Delete
               </button>
