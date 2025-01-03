@@ -8,7 +8,7 @@ import { NextSSRPlugin } from "node_modules/@uploadthing/react/next-ssr-plugin/i
 import { Toaster } from "~/components/ui/sonner";
 import { ThemeProvider } from "~/components/theme-provider";
 import TopNav from "./_components/topnav";
-import BackgroundGlow from "./_components/background-glow";
+import BackgroundLights from "./_components/background-lights";
 
 export const metadata: Metadata = {
   title: "The Gallery",
@@ -30,7 +30,7 @@ export default function RootLayout({
         <body>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="grid h-screen grid-rows-[auto,1fr]">
-              <BackgroundGlow />
+              <BackgroundLights />
               <TopNav />
               <main className="overflow-y-scroll">{children}</main>
             </div>

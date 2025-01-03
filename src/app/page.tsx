@@ -8,12 +8,17 @@ export default function HomePage() {
   return (
     <>
       <SignedOut>
-        <div className="flex h-1/2 flex-col items-center justify-center gap-4">
+        <div className="flex h-1/2 flex-col items-center justify-center gap-4 p-4">
           <AnimateText>
-            <h1 className="text-4xl font-bold">Welcome to The Gallery</h1>
+            <h1 className="text-center text-4xl font-bold">
+              Welcome to{" "}
+              <span className="bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                The Gallery
+              </span>
+            </h1>
           </AnimateText>
           <AnimateText delay={0.8}>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-center text-xl text-muted-foreground">
               Please <span className="font-bold">Sign In</span> to view and
               interact with the collection
             </p>
