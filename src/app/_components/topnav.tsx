@@ -14,7 +14,7 @@ export default function TopNav() {
       </div>
       <div className="flex flex-row items-center gap-6">
         <SignedOut>
-          <SignInButton />
+          <SignInButton>Sign In</SignInButton>
         </SignedOut>
         <SignedIn>
           <SimpleUploadButton />

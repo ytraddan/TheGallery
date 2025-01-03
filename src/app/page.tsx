@@ -7,8 +7,12 @@ export default function HomePage() {
   return (
     <>
       <SignedOut>
-        <div className="mt-16 text-center text-2xl">
-          You must be Signed In to view The Gallery
+        <div className="flex h-1/2 flex-col items-center justify-center gap-4">
+          <h1 className="text-4xl font-bold">Welcome to The Gallery</h1>
+          <p className="text-xl text-muted-foreground">
+            Please <span className="font-bold">Sign In</span> to view and
+            interact with the collection
+          </p>
         </div>
       </SignedOut>
       <SignedIn>
