@@ -8,11 +8,11 @@ export default function HomePage() {
   return (
     <>
       <SignedOut>
-        <div className="flex h-1/2 flex-col items-center justify-center gap-4 p-4">
+        <div className="flex h-1/2 flex-col items-center justify-center gap-4 p-8 selection:bg-primary selection:text-primary-foreground">
           <AnimateText>
             <h1 className="text-center text-4xl font-bold">
               Welcome to{" "}
-              <span className="bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="whitespace-nowrap bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 The Gallery
               </span>
             </h1>
