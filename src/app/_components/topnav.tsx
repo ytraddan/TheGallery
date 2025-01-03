@@ -8,7 +8,9 @@ export default function TopNav() {
     <nav className="flex h-20 w-full items-center justify-between border-b bg-card/65 p-8 text-2xl font-semibold md:px-16">
       <div className="flex items-center gap-4">
         <Link href="/">
-          <div>The Gallery</div>
+          <div className="bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            The Gallery
+          </div>
         </Link>
         <ThemeToggle />
       </div>

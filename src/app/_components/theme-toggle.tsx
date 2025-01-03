@@ -7,7 +7,7 @@ export default function ThemeToggle() {
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <div
-      className="cursor-pointer transition-opacity hover:opacity-70"
+      className="cursor-pointer"
       onClick={() =>
         currentTheme == "dark" ? setTheme("light") : setTheme("dark")
       }
@@ -29,9 +29,15 @@ function SunSVG() {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke="currentColor"
+      stroke="url(#sunGradient)"
       className="size-6"
     >
+      <defs>
+        <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#60A5FA" /> {/* blue-400 */}
+          <stop offset="100%" stopColor="#EC4899" /> {/* pink-500 */}
+        </linearGradient>
+      </defs>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -48,9 +54,15 @@ function MoonSVG() {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.8}
-      stroke="currentColor"
+      stroke="url(#moonGradient)"
       className="size-6"
     >
+      <defs>
+        <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#A78BFA" /> {/* violet-400 */}
+          <stop offset="100%" stopColor="#EC4899" /> {/* pink-500 */}
+        </linearGradient>
+      </defs>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
