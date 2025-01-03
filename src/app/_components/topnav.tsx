@@ -16,7 +16,11 @@ export default function TopNav() {
       </div>
       <div className="flex flex-row items-center gap-6">
         <SignedOut>
-          <SignInButton>Sign In</SignInButton>
+          <SignInButton>
+            <button className="rounded-xl bg-gradient-to-r from-blue-500 via-purple-400 to-pink-400 px-4 py-2 text-lg text-white transition-opacity hover:opacity-85">
+              Sign In
+            </button>
+          </SignInButton>
         </SignedOut>
         <SignedIn>
           <SimpleUploadButton />
