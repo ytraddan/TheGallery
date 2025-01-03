@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { clerkClient } from "@clerk/nextjs/server";
-import { deleteImage, getImage } from "~/server/queries";
-import { deleteImageUT } from "~/server/uploadthing";
-import { redirect } from "next/navigation";
+import { getImage } from "~/server/queries";
+import DeleteForm from "./ui/deleteForm";
 
 export default async function FullPageImageView(props: { id: number }) {
   const image = await getImage(props.id);
@@ -51,21 +50,14 @@ export default async function FullPageImageView(props: { id: number }) {
             <button className="w-full rounded-xl bg-zinc-200/40 p-4 text-blue-500 hover:underline dark:bg-zinc-800/40">
               Edit
             </button>
-            <form
-              action={async () => {
-                "use server";
-                await deleteImage(image.id);
-                await deleteImageUT(image.UTKey);
-                redirect("/");
-              }}
-            >
+            <DeleteForm id={image.id} UTKey={image.UTKey}>
               <button
                 type="submit"
                 className="w-full rounded-xl bg-zinc-200/40 p-4 text-red-500 hover:underline dark:bg-zinc-800/40"
               >
                 Delete
               </button>
-            </form>
+            </DeleteForm>
           </div>
         </div>
       </div>
