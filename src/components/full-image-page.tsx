@@ -11,7 +11,7 @@ export default async function FullPageImageView(props: { id: number }) {
 
   return (
     <div className="flex flex-col p-8 md:flex-row md:space-x-5 md:px-16">
-      <div className="flex flex-1 items-center justify-center overflow-hidden rounded-xl border bg-card/65 backdrop-blur-xl dark:bg-card/50 md:aspect-video">
+      <div className="flex flex-1 items-center justify-center overflow-hidden rounded-xl border bg-card/65 backdrop-blur-xl md:aspect-video dark:bg-card/50">
         <Image
           src={image.url}
           alt={image.name}
@@ -20,7 +20,7 @@ export default async function FullPageImageView(props: { id: number }) {
           height={1080}
         />
       </div>
-      <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/65 backdrop-blur-2xl dark:bg-card/50 md:w-80">
+      <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/65 backdrop-blur-2xl md:w-80 dark:bg-card/50">
         <div className="border-b p-4">
           <h2 className="text-center text-xl font-semibold first-letter:capitalize">
             {image.name.split(".").slice(0, -1).join(".")}
@@ -53,16 +53,13 @@ export default async function FullPageImageView(props: { id: number }) {
             </p>
           </div>
           <div className="mt-auto space-y-4">
-            {/* <button
-              disabled 
-              className="w-full rounded-xl bg-zinc-200/40 p-4 text-lg text-blue-500 dark:bg-zinc-800/40"
-            >
+            <button className="w-full rounded-xl bg-blue-500/10 p-4 text-lg font-medium text-blue-500 transition-colors hover:bg-blue-500/20">
               Edit
-            </button> */}
+            </button>
             <DeleteForm id={image.id} UTKey={image.UTKey}>
               <button
                 type="submit"
-                className="w-full rounded-xl bg-red-500/5 p-4 text-lg font-medium text-red-500 transition-colors hover:bg-red-500/15 hover:text-red-600"
+                className="w-full rounded-xl bg-red-500/10 p-4 text-lg font-medium text-red-500 transition-colors hover:bg-red-500/20"
               >
                 Delete
               </button>
