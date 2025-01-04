@@ -17,6 +17,14 @@ export async function deleteImageAction(id: number, UTKey: string) {
 }
 
 export async function updateImageTitleAction(id: number, title: string) {
-  await updateImageTitle(id, title);
-  revalidatePath(`/img/${id}`);
+  try {
+    await updateImageTitle(id, title);
+    revalidatePath(`/img/${id}`);
+  } catch (error) {
+    if (error instanceof Error) {
+      return { status: "error", message: error.message };
+    }
+    return { status: "error", message: "Failed to update image title" };
+  }
+  return { status: "success", message: "Image title was successfully updated" };
 }

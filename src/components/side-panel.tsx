@@ -6,6 +6,8 @@ import type { Image as ImageType } from "~/server/db/schema";
 import DeleteForm from "./ui/deleteForm";
 import { updateImageTitleAction } from "~/lib/actions";
 import { LoadingSpinnerSvg } from "~/app/_components/simple-upload-button";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type SidePanelProps = {
   image: ImageType;
@@ -21,6 +23,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState(image.name);
   const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +31,12 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
     setIsLoading(true);
     const formData = new FormData(formRef.current!);
     const title = formData.get("title");
-    await updateImageTitleAction(image.id, title as string);
+    const result = await updateImageTitleAction(image.id, title as string);
+    if (result.status === "error") {
+      router.push("/");
+      toast.error(result.message);
+      return;
+    }
     setIsLoading(false);
   };
 
