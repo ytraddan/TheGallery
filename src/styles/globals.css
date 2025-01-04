@@ -99,9 +99,9 @@ dialog:modal {
 
 @layer base {
   * {
-    @apply border-border transition-colors duration-300;
+    @apply border-border transition-[background-color,border-color,fill,stroke] duration-300;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-[250];
   }
 }
