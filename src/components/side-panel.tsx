@@ -42,7 +42,8 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
 
   return (
     <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/75 backdrop-blur-2xl md:w-80 dark:bg-card/50">
-      <div className="border-b p-4">
+      <div className="border-b p-2">
+        <GoBackButton />
         {isEditing ? (
           <form ref={formRef} onSubmit={handleSubmit}>
             <input
@@ -108,7 +109,10 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
   function CancelButton() {
     return (
       <button
-        onClick={() => setIsEditing(false)}
+        onClick={() => {
+          setIsEditing(false);
+          setTitle(image.name);
+        }}
         className="w-full rounded-xl bg-blue-500/20 p-4 text-lg font-medium text-blue-700 transition-colors hover:bg-blue-500/35 dark:bg-blue-500/10 dark:text-blue-500 dark:hover:bg-blue-500/20"
       >
         Cancel
@@ -150,4 +154,31 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
       </DeleteForm>
     );
   }
+}
+
+function GoBackButton() {
+  const router = useRouter();
+
+  return (
+    <button
+      onClick={() => router.back()}
+      className="absolute -top-8 right-0 flex items-center gap-2 rounded-lg px-2 py-1 text-sm text-muted hover:bg-accent/20 dark:text-muted-foreground dark:hover:bg-card-foreground/10"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        className="size-3"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </svg>
+      Go back
+    </button>
+  );
 }
