@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Error({
   error,
@@ -9,8 +9,6 @@ export default function Error({
   error: Error;
   reset: () => void;
 }) {
-  const router = useRouter();
-
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 text-center">
       <div className="space-y-2">
@@ -20,12 +18,12 @@ export default function Error({
         </p>
       </div>
       <div className="flex gap-2">
-        <button
-          onClick={() => router.push("/")}
+        <Link
+          href="/"
           className="rounded-md border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
         >
           Go home
-        </button>
+        </Link>
         <button
           onClick={() => reset()}
           className="rounded-md border bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
