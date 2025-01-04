@@ -28,7 +28,7 @@ export default function RootLayout({
       >
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark">
             <div className="grid h-screen grid-rows-[auto,1fr]">
               <BackgroundLights />
               <TopNav />

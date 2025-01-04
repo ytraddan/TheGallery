@@ -40,7 +40,7 @@ export default async function FullPageImageView(props: { id: number }) {
               <p>
                 {uploaderInfo.fullName}
                 <span className="block text-sm text-muted-foreground">
-                  @{uploaderInfo.username}
+                  {uploaderInfo.username && `@${uploaderInfo.username}`}
                 </span>
               </p>
             </div>

@@ -3,14 +3,11 @@
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const { theme, setTheme } = useTheme();
   return (
     <div
       className="cursor-pointer"
-      onClick={() =>
-        currentTheme == "dark" ? setTheme("light") : setTheme("dark")
-      }
+      onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}
     >
       <div className="hidden dark:block">
         <SunSVG />
