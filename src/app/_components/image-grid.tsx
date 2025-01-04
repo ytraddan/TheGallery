@@ -27,7 +27,7 @@ export default async function ImageGrid() {
               </div>
               <div className="p-4 backdrop-blur-sm">
                 <h2 className="text-center font-medium first-letter:capitalize">
-                  {image.name.split(".").slice(0, -1).join(".")}
+                  {image.name}
                 </h2>
               </div>
             </Link>
