@@ -1,4 +1,5 @@
 # The Gallery
+![image_2025-01-04_23-13-18](https://github.com/user-attachments/assets/c1b3f06f-6fc8-499f-a143-acf7d35142dc)
 
 A modern, responsive image gallery application built with Next.js 15.
 
