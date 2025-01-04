@@ -6,7 +6,6 @@ A modern, responsive image gallery application built with Next.js 15.
 
 - **Framework**: [Next.js 15](https://nextjs.org/)
 - **Authentication**: [Clerk](https://clerk.com/)
-- **Type Safety**: [TypeScript](https://www.typescriptlang.org/)
 - **Image Upload**: [UploadThing](https://uploadthing.com/)
 - **Database**:
   - [Vercel Postgres](https://vercel.com/storage/postgres)
@@ -15,7 +14,7 @@ A modern, responsive image gallery application built with Next.js 15.
   - [Tailwind CSS](https://tailwindcss.com/)
   - [Shadcn UI](https://ui.shadcn.com/)
   - [Heroicons](https://heroicons.com/)
-- **UI Components**:
+- **UI**:
   - [Framer Motion](https://www.framer.com/motion/) for animations
   - [Sonner](https://sonner.emilkowal.ski/) for toast notifications
   - [React Masonry CSS](https://www.npmjs.com/package/react-masonry-css) for grid layout
@@ -24,15 +23,15 @@ A modern, responsive image gallery application built with Next.js 15.
 
 - **Routing & Navigation**:
   - Parallel routing for modal views
+  - Server-side rendering
   - Dynamic image routes
-  - Custom 404 Not Found page
+  - Not Found page
   - Error boundary handling
 - **Image Management**:
   - Secure image uploads using UploadThing
+  - Ability to edit and delete images
   - Responsive masonry grid layout
-  - Full-screen image view
 - **User Experience**:
-  - Server-side rendering for optimal performance
   - Dark/Light mode support
   - Smooth animations and transitions
   - Toast notifications for user feedback
@@ -108,6 +107,5 @@ pnpm start
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
-- `pnpm typecheck` - Check TypeScript types
 - `pnpm db:push` - Push database schema changes
 - `pnpm db:studio` - Open Drizzle Studio
