@@ -51,16 +51,18 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
               name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-lg bg-background/50 text-center text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg bg-background/50 p-2 text-center text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
               autoFocus
             />
           </form>
         ) : isLoading ? (
-          <div className="flex items-center justify-center py-1">
+          <div className="flex items-center justify-center py-3">
             <LoadingSpinnerSvg />
           </div>
         ) : (
-          <h2 className="text-center text-xl font-semibold">{title}</h2>
+          <h2 className="truncate px-2 py-2 text-center text-xl font-semibold">
+            {title}
+          </h2>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-4 p-4">
