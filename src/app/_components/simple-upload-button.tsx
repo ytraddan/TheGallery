@@ -87,7 +87,7 @@ function UploadSVG() {
   );
 }
 
-function LoadingSpinnerSvg() {
+export function LoadingSpinnerSvg() {
   return (
     <svg
       className="size-5"

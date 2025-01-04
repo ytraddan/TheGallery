@@ -53,3 +53,20 @@ export async function deleteImage(id: number) {
     .delete(images)
     .where(and(eq(images.id, id), eq(images.userId, userId)));
 }
+
+export async function updateImageTitle(id: number, title: string) {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const image = await db.query.images.findFirst({
+    where: (model, { eq }) => eq(model.id, id),
+  });
+
+  if (!image) throw new Error("Image not found");
+  if (image.userId !== userId) throw new Error("Unauthorized");
+
+  await db
+    .update(images)
+    .set({ name: title })
+    .where(and(eq(images.id, id), eq(images.userId, userId)));
+}
