@@ -41,7 +41,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
   };
 
   return (
-    <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/65 backdrop-blur-2xl md:w-80 dark:bg-card/50">
+    <div className="flex w-full flex-shrink-0 flex-col rounded-xl border bg-card/75 backdrop-blur-2xl md:w-80 dark:bg-card/50">
       <div className="border-b p-4">
         {isEditing ? (
           <form ref={formRef} onSubmit={handleSubmit}>
@@ -109,7 +109,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
     return (
       <button
         onClick={() => setIsEditing(false)}
-        className="w-full rounded-xl dark:bg-blue-500/10 bg-blue-500/30 p-4 text-lg font-medium dark:text-blue-500 text-blue-700 transition-colors dark:hover:bg-blue-500/20 hover:bg-blue-500/45"
+        className="w-full rounded-xl bg-blue-500/20 p-4 text-lg font-medium text-blue-700 transition-colors hover:bg-blue-500/35 dark:bg-blue-500/10 dark:text-blue-500 dark:hover:bg-blue-500/20"
       >
         Cancel
       </button>
@@ -120,7 +120,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
     return (
       <button
         onClick={handleSubmit}
-        className="w-full rounded-xl dark:bg-green-500/10 bg-green-500/30 p-4 text-lg font-medium dark:text-green-500 text-green-700 transition-colors dark:hover:bg-green-500/20 hover:bg-green-500/45"
+        className="w-full rounded-xl bg-green-500/20 p-4 text-lg font-medium text-green-700 transition-colors hover:bg-green-500/35 dark:bg-green-500/10 dark:text-green-500 dark:hover:bg-green-500/20"
       >
         Submit
       </button>
@@ -131,7 +131,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
     return (
       <button
         onClick={() => setIsEditing(true)}
-        className="w-full rounded-xl dark:bg-blue-500/10 bg-blue-500/30 p-4 text-lg font-medium dark:text-blue-500 text-blue-700 transition-colors dark:hover:bg-blue-500/20 hover:bg-blue-500/45"
+        className="w-full rounded-xl bg-blue-500/20 p-4 text-lg font-medium text-blue-700 transition-colors hover:bg-blue-500/35 dark:bg-blue-500/10 dark:text-blue-500 dark:hover:bg-blue-500/20"
       >
         Edit
       </button>
@@ -143,7 +143,7 @@ export default function SidePanel({ image, uploader }: SidePanelProps) {
       <DeleteForm id={image.id} UTKey={image.UTKey}>
         <button
           type="submit"
-          className="w-full rounded-xl dark:bg-red-500/10 bg-red-500/30 p-4 text-lg font-medium dark:text-red-500 text-red-700 transition-colors dark:hover:bg-red-500/20 hover:bg-red-500/45"
+          className="w-full rounded-xl bg-red-500/20 p-4 text-lg font-medium text-red-700 transition-colors hover:bg-red-500/35 dark:bg-red-500/10 dark:text-red-500 dark:hover:bg-red-500/20"
         >
           Delete
         </button>
