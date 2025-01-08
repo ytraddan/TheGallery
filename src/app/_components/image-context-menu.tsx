@@ -17,10 +17,12 @@ export default function ImageContextMenu({
   children,
   image,
   onClick,
+  isSelected,
 }: {
   children: React.ReactNode;
   image: Image;
   onClick: () => void;
+  isSelected: boolean;
 }) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -85,7 +87,9 @@ export default function ImageContextMenu({
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuItem onClick={onClick}>Select</ContextMenuItem>
+        <ContextMenuItem onClick={onClick}>
+          {isSelected ? "Deselect" : "Select"}
+        </ContextMenuItem>
         <ContextMenuItem onClick={handleDownload} disabled={isPending}>
           Download
         </ContextMenuItem>
