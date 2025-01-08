@@ -11,19 +11,16 @@ import { useTransition } from "react";
 import { toast } from "sonner";
 import { LoadingSpinnerSvg } from "./simple-upload-button";
 import { useRouter } from "next/navigation";
+import { type Image } from "~/server/db/schema";
 
 export default function ImageContextMenu({
   children,
-  imageId,
-  imageUrl,
-  imageName,
-  UTKey,
+  image,
+  onClick,
 }: {
   children: React.ReactNode;
-  imageId: number;
-  imageUrl: string;
-  imageName: string;
-  UTKey: string;
+  image: Image;
+  onClick: () => void;
 }) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -41,7 +38,7 @@ export default function ImageContextMenu({
     );
     startTransition(async () => {
       try {
-        await deleteImageAction(imageId, UTKey);
+        await deleteImageAction(image.id, image.UTKey);
         router.refresh();
         toast.dismiss("delete-begin");
         toast.success("Image deleted successfully!");
@@ -65,12 +62,12 @@ export default function ImageContextMenu({
       },
     );
     try {
-      const response = await fetch(imageUrl);
+      const response = await fetch(image.url);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = imageName;
+      a.download = image.name;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -88,6 +85,7 @@ export default function ImageContextMenu({
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
       <ContextMenuContent>
+        <ContextMenuItem onClick={onClick}>Select</ContextMenuItem>
         <ContextMenuItem onClick={handleDownload} disabled={isPending}>
           Download
         </ContextMenuItem>
