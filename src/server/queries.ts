@@ -1,6 +1,6 @@
 import "server-only";
 import { db } from "./db";
-import { and, eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
 import { images } from "./db/schema";
 
@@ -49,7 +49,22 @@ export async function deleteImage(id: number) {
   if (!image) throw new Error("Image not found");
   // if (image.userId !== userId) throw new Error("Unauthorized");
 
-  await db.delete(images).where(and(eq(images.id, id)));
+  await db.delete(images).where(eq(images.id, id));
+}
+
+export async function deleteImages(ids: number[]) {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const imageArr = await db.query.images.findMany({
+    where: (model, { inArray }) => inArray(model.id, ids),
+  });
+
+  if (!imageArr) throw new Error("Images not found");
+  // if (images.some((image) => image.userId !== userId))
+  //   throw new Error("Unauthorized");
+
+  await db.delete(images).where(inArray(images.id, ids));
 }
 
 export async function updateImageTitle(id: number, title: string) {
