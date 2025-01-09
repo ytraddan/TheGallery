@@ -1,12 +1,10 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import ImageGrid from "./_components/image-grid";
 import AnimateText from "./_components/animate-text";
-import { getImages } from "~/server/queries";
+import Gallery from "./_components/gallery";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
-  const images = await getImages();
+export default function HomePage() {
   return (
     <>
       <SignedOut>
@@ -35,7 +33,7 @@ export default async function HomePage() {
         </div>
       </SignedOut>
       <SignedIn>
-        <ImageGrid images={images} />
+        <Gallery />
       </SignedIn>
     </>
   );
