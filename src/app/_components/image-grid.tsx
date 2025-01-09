@@ -81,19 +81,19 @@ export default function ImageGrid({ images }: { images: ImageType[] }) {
                 setIsSelecting(false);
                 setSelectedImages([]);
               }}
-              className="rounded-lg px-4 py-2 font-medium text-card-foreground transition-colors hover:bg-card-foreground/10"
+              className="rounded-lg px-4 py-2 text-card-foreground transition-colors hover:bg-card-foreground/10"
             >
               Cancel
             </button>
             <button
               onClick={handleDownload}
-              className="rounded-lg px-4 py-2 font-medium text-blue-700 transition-colors hover:bg-blue-500/10 dark:text-blue-500"
+              className="rounded-lg px-4 py-2 text-blue-700 transition-colors hover:bg-blue-500/10 dark:text-blue-500"
             >
               Download
             </button>
             <button
               onClick={handleDelete}
-              className="rounded-lg px-4 py-2 font-medium text-red-700 transition-colors hover:bg-red-500/10 dark:text-red-500"
+              className="rounded-lg px-4 py-2 text-red-700 transition-colors hover:bg-red-500/10 dark:text-red-500"
             >
               Delete
             </button>
