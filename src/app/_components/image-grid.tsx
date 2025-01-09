@@ -8,10 +8,16 @@ import ImageContextMenu from "./image-context-menu";
 import { type Image as ImageType } from "~/server/db/schema";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { downloadImages } from "~/lib/images";
+import { toast } from "sonner";
+import { LoadingSpinnerSvg } from "./simple-upload-button";
+import { deleteImagesAction } from "~/lib/actions";
+import { useRouter } from "next/navigation";
 
 export default function ImageGrid({ images }: { images: ImageType[] }) {
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectedImages, setSelectedImages] = useState<ImageType[]>([]);
+  const router = useRouter();
 
   const toggleSelection = (image: ImageType) => {
     if (selectedImages.includes(image)) {
@@ -21,20 +27,77 @@ export default function ImageGrid({ images }: { images: ImageType[] }) {
     }
   };
 
+  const handleDownload = async () => {
+    toast(
+      <div className="flex items-center gap-3">
+        <LoadingSpinnerSvg />
+        <span>Downloading...</span>
+      </div>,
+      {
+        duration: 50000,
+        id: "download-begin",
+      },
+    );
+    setIsSelecting(false);
+    setSelectedImages([]);
+    void downloadImages(selectedImages);
+  };
+
+  const handleDelete = async () => {
+    toast(
+      <div className="flex items-center gap-3">
+        <LoadingSpinnerSvg />
+        <span>Deleting...</span>
+      </div>,
+      {
+        duration: 50000,
+        id: "delete-begin",
+      },
+    );
+    setIsSelecting(false);
+    setSelectedImages([]);
+    const result = await deleteImagesAction(
+      selectedImages.map((image) => image.id),
+      selectedImages.map((image) => image.UTKey),
+    );
+    router.refresh();
+    if (result.status === "success") {
+      toast.dismiss("delete-begin");
+      toast.success(result.message);
+    } else if (result.status === "error") {
+      toast.dismiss("delete-begin");
+      toast.error(result.message);
+    }
+  };
+
   const SelectionBar = () => {
     return (
-      <div className="border-b border-border bg-card/70 p-4">
-        <div className="flex items-center justify-between">
-          <div>Selected: {selectedImages.length}</div>
-          <button
-            onClick={() => {
-              setIsSelecting(false);
-              setSelectedImages([]);
-            }}
-          >
-            Cancel
-          </button>
-          <button>Delete</button>
+      <div className="bg-card/50 p-3 px-8 backdrop-blur-xl md:px-14">
+        <div className="flex items-center justify-between gap-4">
+          <span>Selected: {selectedImages.length} image(s)</span>
+          <div className="flex gap-3">
+            <button
+              onClick={() => {
+                setIsSelecting(false);
+                setSelectedImages([]);
+              }}
+              className="rounded-lg px-4 py-2 font-medium text-card-foreground transition-colors hover:bg-card-foreground/10"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleDownload}
+              className="rounded-lg px-4 py-2 font-medium text-blue-700 transition-colors hover:bg-blue-500/10 dark:text-blue-500"
+            >
+              Download
+            </button>
+            <button
+              onClick={handleDelete}
+              className="rounded-lg px-4 py-2 font-medium text-red-700 transition-colors hover:bg-red-500/10 dark:text-red-500"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -114,7 +177,7 @@ function CheckedSVG() {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke="currentColor"
+      stroke="white"
       className="size-5"
     >
       <path

@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { LoadingSpinnerSvg } from "./simple-upload-button";
 import { useRouter } from "next/navigation";
 import { type Image } from "~/server/db/schema";
+import { downloadImages } from "~/lib/images";
 
 export default function ImageContextMenu({
   children,
@@ -39,16 +40,15 @@ export default function ImageContextMenu({
       },
     );
     startTransition(async () => {
-      try {
-        await deleteImageAction(image.id, image.UTKey);
-        router.refresh();
+      const result = await deleteImageAction(image.id, image.UTKey);
+      if (result.status === "success") {
         toast.dismiss("delete-begin");
-        toast.success("Image deleted successfully!");
-      } catch (error) {
+        toast.success(result.message);
+      } else if (result.status === "error") {
         toast.dismiss("delete-begin");
-        toast.error("Failed to delete image");
-        console.error("Error deleting image:", error);
+        toast.error(result.message);
       }
+      router.refresh();
     });
   };
 
@@ -63,24 +63,7 @@ export default function ImageContextMenu({
         id: "download-begin",
       },
     );
-    try {
-      const response = await fetch(image.url);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = image.name;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-      toast.dismiss("download-begin");
-      toast.success("Finished!");
-    } catch (error) {
-      console.error("Error downloading image:", error);
-      toast.dismiss("download-begin");
-      toast.error("Error downloading image");
-    }
+    void downloadImages(image);
   };
 
   return (
