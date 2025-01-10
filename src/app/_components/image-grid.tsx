@@ -69,54 +69,10 @@ export default function ImageGrid({ images }: { images: ImageType[] }) {
       toast.error(result.message);
     }
   };
-
-  const SelectionBar = () => {
-    return (
-      <div className="bg-card/50 p-3 px-8 backdrop-blur-xl md:px-14">
-        <div className="flex items-center justify-between gap-4">
-          <span>Selected: {selectedImages.length} image(s)</span>
-          <div className="flex gap-3">
-            <button
-              onClick={() => {
-                setIsSelecting(false);
-                setSelectedImages([]);
-              }}
-              className="rounded-lg px-4 py-2 text-card-foreground transition-colors hover:bg-card-foreground/10"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleDownload}
-              className="rounded-lg px-4 py-2 text-blue-700 transition-colors hover:bg-blue-500/10 dark:text-blue-500"
-            >
-              Download
-            </button>
-            <button
-              onClick={handleDelete}
-              className="rounded-lg px-4 py-2 text-red-700 transition-colors hover:bg-red-500/10 dark:text-red-500"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div>
-      <AnimatePresence>
-        {isSelecting && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <SelectionBar />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <SelectionBar />
+
       <div className="p-8 md:px-14">
         <MasonryGrid>
           {images.map((image, index) => (
@@ -150,8 +106,8 @@ export default function ImageGrid({ images }: { images: ImageType[] }) {
                     <Image
                       src={image.url}
                       className="w-full object-cover"
-                      width={400}
-                      height={300}
+                      width={700}
+                      height={500}
                       alt={image.name}
                     />
                   </div>
@@ -168,6 +124,50 @@ export default function ImageGrid({ images }: { images: ImageType[] }) {
       </div>
     </div>
   );
+
+  function SelectionBar() {
+    return (
+      <AnimatePresence>
+        {isSelecting && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="bg-card/50 p-3 px-8 backdrop-blur-xl md:px-14">
+              <div className="flex items-center justify-between gap-4">
+                <span>Selected: {selectedImages.length} image(s)</span>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => {
+                      setIsSelecting(false);
+                      setSelectedImages([]);
+                    }}
+                    className="rounded-lg px-4 py-2 text-card-foreground transition-colors hover:bg-card-foreground/10"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleDownload}
+                    className="rounded-lg px-4 py-2 text-blue-700 transition-colors hover:bg-blue-500/10 dark:text-blue-500"
+                  >
+                    Download
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    className="rounded-lg px-4 py-2 text-red-700 transition-colors hover:bg-red-500/10 dark:text-red-500"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>{" "}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
 }
 
 function CheckedSVG() {
